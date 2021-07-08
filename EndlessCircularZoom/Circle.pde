@@ -1,7 +1,8 @@
 class Circle {
 
-  float x, y, d;
+  float d;
   color col;
+  float t;
   boolean isFinished;
 
   Circle(color col_) {
@@ -9,11 +10,18 @@ class Circle {
     isFinished = false;
   }
 
-  void show(float parentD) {
-    if(!isFinished){
-      d = parentD*a/period; // stop updating once finished
-    }
+  void show() {
     fill(col);
-    ellipse((parentD/2-d/2)*cos(-a-offset), (parentD/2 - d/2)*sin(-a-offset), d, d);
+    // stop updating once finished
+    if(!isFinished){
+      d = D*t/period; 
+    }
+    
+    
+    ellipse(0.5*(D-d)*cos(t), 0.5*(D-d)*sin(t), d, d);
+    t += increment;
+    if(t > period){
+      isFinished = true;
+    }
   }
 }
