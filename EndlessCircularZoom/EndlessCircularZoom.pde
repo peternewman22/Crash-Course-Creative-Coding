@@ -21,6 +21,9 @@ boolean isScenario1;
 float period, offset;
 ArrayList<Circle> circles;
 int colPos = 2;
+int multCycle = 2;
+int maxCols = 3;
+int maxCycles = 3;
 color[] cols = {
   color(0),
   color(255, 0, 0),
@@ -43,13 +46,13 @@ period = 4*TWO_PI;
 offset = PI/2;
 circles = new ArrayList<Circle>();
 // load the first circle
-Circle first = new Circle(cols[0]);
+Circle first = new Circle(cols[0],1);
 first.d = D;
 first.isFinished = true;
 circles.add(first);
 
 // load the second circle
-circles.add(new Circle(cols[1]));
+circles.add(new Circle(cols[1],1));
 
 
 noStroke();
@@ -68,8 +71,9 @@ void draw() {
   // look at the last circle
   // if the counter is greater than TWO_PI, gen new circle
   if (circles.get(circles.size()-1).t > TWO_PI) {
-    circles.add(new Circle(cols[colPos%cols.length]));
+    circles.add(new Circle(cols[colPos%maxCols],multCycle%maxCycles));
     colPos += 1;
+    multCycle += 1;
   }
 
   popMatrix();

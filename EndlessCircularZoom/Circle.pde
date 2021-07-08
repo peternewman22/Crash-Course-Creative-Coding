@@ -3,11 +3,13 @@ class Circle {
   float d;
   color col;
   float t;
+  int multiplier;
   boolean isFinished;
 
-  Circle(color col_) {
+  Circle(color col_,int multiplier_) {
     col = col_;
     isFinished = false;
+    multiplier = multiplier_;
   }
 
   void show() {
@@ -18,7 +20,7 @@ class Circle {
     }
     
     
-    ellipse(0.5*(D-d)*cos(t), 0.5*(D-d)*sin(t), d, d);
+    ellipse(0.5*(D-d)*cos(multiplier*t), 0.5*(D-d)*sin(multiplier*t), d, d);
     t += increment;
     if(t > period){
       isFinished = true;
