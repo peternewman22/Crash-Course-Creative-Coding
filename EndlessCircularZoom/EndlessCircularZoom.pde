@@ -23,7 +23,7 @@ void setup() {
   size(720, 720);
   D = 500;
   a = 0;
-  increment = 0.03;
+  increment = 0.05;
   steps = D/increment;
   isScenario1 = true;
   period = 4*TWO_PI;
@@ -46,13 +46,14 @@ void setup() {
 void draw() {
   background(255);
   
-  pushMatrix();
-  translate(width/2, height/2);
-  circles.get(0).show(D);
-  circles.get(1).show(circles.get(0).d);
-  popMatrix();
+  //pushMatrix();
+  //translate(width/2, height/2);
+  //circles.get(0).show(D);
+  //circles.get(1).show(circles.get(0).d);
+  //popMatrix();
   
-  a += increment;
+  //a += increment;
+  renderV1();
   
 }
 
