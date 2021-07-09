@@ -1,6 +1,6 @@
 class Circle {
 
-  float d;
+  float d, x, y;
   color col;
   float t;
   int multiplier;
@@ -17,10 +17,12 @@ class Circle {
     // stop updating once finished
     if(!isFinished){
       d = D*t/period; 
+      x = 0.5*(D-d)*cos(multiplier*t);
+      y = 0.5*(D-d)*sin(multiplier*t);
     }
     
     
-    ellipse(0.5*(D-d)*cos(multiplier*t), 0.5*(D-d)*sin(multiplier*t), d, d);
+    ellipse(x, y, d, d);
     t += increment;
     if(t > period){
       isFinished = true;
