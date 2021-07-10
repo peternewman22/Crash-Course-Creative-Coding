@@ -14,7 +14,7 @@ class Segment {
     br = new PVector(x + segW / 2, y + segH / 2);
   }
 
-  show() {
+  void show() {
     // rect(x, y, segW, segH);
     if (isVertical) {
       beginShape();
