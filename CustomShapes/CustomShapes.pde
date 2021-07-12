@@ -31,7 +31,7 @@ void drawStraightLines() {
 }
 void drawCurvedLines() {
   beginShape();
-  curveVertex(-L, L);
+  curveVertex(mouseX, mouseY);
   curveVertex(-L, -L);
   curveVertex(L, -L);
   curveVertex(L, L);
