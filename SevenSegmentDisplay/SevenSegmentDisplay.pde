@@ -4,9 +4,9 @@ Segment[] segs;
 
 int currentNumber = 0;
 boolean[] zero = {true, true, true, true, true, true, false}; //0
-boolean[] one ={false, false, false, false, true, true, false}; //1
+boolean[] one ={false, true, true, false, false, false, false}; //1
 boolean[] two ={true, true, false, true, true, false, true}; //2
-boolean[] three ={false, true, true, true, false, false, true}; //3
+boolean[] three ={true, true, true, true, false, false, true}; //3
 boolean[] four = {false, true, true, false, false, true, true}; //4
 boolean[] five = {true, false, true, true, false, true, true}; //5
 boolean[] six = {true, false, true, true, true, true, true}; //6
