@@ -6,7 +6,7 @@ class Asteroid{
   Asteroid(){
     d = random(50,200);
     pos = new PVector(width+d,random(d,height-d)); // this way the asteroid always appears fully on the screen
-    vel = new PVector(-random(0.5,3),0);
+    vel = new PVector(-random(0.2,2),0); // note: difficulty mult only applies upon creation ? - currently speeding up
     isFinished = false;
   }
   

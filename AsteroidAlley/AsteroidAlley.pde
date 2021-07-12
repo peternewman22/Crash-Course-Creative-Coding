@@ -1,9 +1,12 @@
+import processing.sound.*;
+
 float f; // global flicker rate 
 Starfield starfield;
 AsteroidField asteroidfield;
 boolean debugMode;
 float difficultyMult;
 int score;
+SoundFile track2;
 
 
 void setup(){
@@ -17,6 +20,8 @@ void setup(){
   textSize(50);
   difficultyMult = 1;
   score = 0;
+  track2 = new SoundFile(this, "Track2.mp3");
+  track2.play();
 
 }
 
