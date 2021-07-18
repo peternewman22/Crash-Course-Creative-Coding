@@ -37,6 +37,7 @@ class Asteroid{
     //ellipse(pos.x, pos.y, d, d);
     drawPolygon(pos.x, pos.y);
   }
+  
   void createPolygon(float x, float y, float radius, int npoints){
     float angle = TWO_PI / npoints;
     float[] perlin = new float[npoints];
