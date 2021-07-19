@@ -40,7 +40,7 @@ class Connection{
         break;
       case 1:
         int vIndex = (start + 1)%6; // so it circles around again
-        arc(vertices[vIndex].x, vertices[vIndex].y,R,R,headings[start],headings[end]);
+        arc(vertices[vIndex].x, vertices[vIndex].y,R,R,endHeadings[end],startHeadings[start]);
         break;
       case 2:
         int sIndex = (start + 1)%6;
