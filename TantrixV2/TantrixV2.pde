@@ -13,13 +13,19 @@ void setup() {
   R = 150;
   r = R*cos(PI/6);
   wideD = 2*r;
-  wideR = wideD*cos(PI/6);
+  wideR = wideD*cos(PI/6)-15;
+  //int[][] tSides = {
+  //  {2, 3}, // r
+  //  {0, 0}, // g
+  //  {4, 5}, // b
+  //  {0, 1} // y
+  //}; 
   int[][] tSides = {
-    {2, 3}, // r
-    {0, 0}, // g
-    {4, 5}, // b
-    {0, 1} // y
-  }; 
+    {1,3},
+    {2,5},
+    {0,0},
+    {0,4}
+  };
   t = new Tile(0, 0, tSides);
 }
 

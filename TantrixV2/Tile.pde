@@ -22,23 +22,23 @@ class Tile {
     }
     
     // recording the sides
-    sidesHeadings = new float[6];
-    for (int i = 0; i < 6; i++) {
-      int endIx = (i+1)%6;
-       float h = PVector.sub(vertices[endIx], vertices[i]).heading();
-       if(h < 0){
-         sidesHeadings[i] = h + TWO_PI;
-       } else {
-         sidesHeadings[i] = h;
-       }
-    }
-    
-    for(int i = 0; i < 6; i++){
-      println(sidesHeadings[i]);
-    }
+    //sidesHeadings = new float[6];
+    //for (int i = 0; i < 6; i++) {
+    //  int endIx = (i+1)%6;
+    //   float h = PVector.sub(vertices[endIx], vertices[i]).heading();
+    //   if(h < 0){
+    //     sidesHeadings[i] = h + TWO_PI;
+    //   } else {
+    //     sidesHeadings[i] = h;
+    //   }
+    //}  
+    //for(int i = 0; i < 6; i++){
+    //  println(sidesHeadings[i]);
+    //}
     
     // recording the midPoints
     midPoints =  new PVector[6][2];
+    
     for(int i = 0; i < 6; i++){
       float a = (2*i+1)*PI/6;
       midPoints[i][0] = new PVector(r*cos(a), r*sin(a));
@@ -66,7 +66,16 @@ class Tile {
 
     // draw connections
     for (Connection c : connections) {
-      c.show(vertices, sidesHeadings, midPoints);
+      c.show(vertices, midPoints);
     }
+    
+    fill(255, 0, 255);
+    for(int i = 0; i < 6; i++){
+      for(int j = 0; j < 2; j++){
+        ellipse(midPoints[i][j].x, midPoints[i][j].y, 10, 10);
+      }
+    }
+    noFill();
+    ellipse(midPoints[0][1].x, midPoints[0][1].y, 2*wideR, 2*wideR);  
   }
 }

@@ -31,7 +31,7 @@ class Connection{
     println("Connection Type " + str(type) + " for " + colourName);
   }
   
-  void show(PVector[] vertices, float[] sidesHeadings, PVector[][] midPoints){
+  void show(PVector[] vertices, PVector[][] midPoints){
     stroke(col);
     strokeWeight(30);
     noFill();
@@ -44,7 +44,7 @@ class Connection{
         break;
       case 2:
         int sIndex = (start + 1)%6;
-        arc(midPoints[sIndex][1].x,midPoints[sIndex][1].x,wideR, wideR, sidesHeadings[start], sidesHeadings[end]);
+        arc(midPoints[sIndex][1].x,midPoints[sIndex][1].x,wideR, wideR, endHeadings[end], startHeadings[start]);
         break;
       case 3:
         line(midPoints[start][0].x, midPoints[start][0].y, midPoints[end][0].x, midPoints[end][0].y);
