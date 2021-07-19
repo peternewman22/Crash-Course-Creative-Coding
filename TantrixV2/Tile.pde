@@ -2,12 +2,19 @@ class Tile {
   PVector pos;
   PVector[] vertices;
   float[] sidesHeadings;
-  PVector[] midPoints;
+  PVector[][] midPoints;
+  int[][] cnx;
 
   Connection[] connections;
-  Tile(float x, float y, int rS, int rE, int gS, int gE, int bS, int bE, int yS, int yE) {
+  Tile(float x, float y, int[][] sideAllocations) {
     pos = new PVector(x, y);
-    
+    cnx = sideAllocations;
+    for(int j = 0; j<4; j++){
+      for(int i = 0; i < 2; i++){
+        print(cnx[j][i] + ", ");
+      }
+      print("\n");
+    }
     // recording the vertices
     vertices = new PVector[6];
     for (int i = 0; i < 6; i++) {
@@ -18,27 +25,39 @@ class Tile {
     sidesHeadings = new float[6];
     for (int i = 0; i < 6; i++) {
       int endIx = (i+1)%6;
-      sidesHeadings[i] = PVector.sub(vertices[endIx], vertices[i]).heading();
+       float h = PVector.sub(vertices[endIx], vertices[i]).heading();
+       if(h < 0){
+         sidesHeadings[i] = h + TWO_PI;
+       } else {
+         sidesHeadings[i] = h;
+       }
+    }
+    
+    for(int i = 0; i < 6; i++){
+      println(sidesHeadings[i]);
     }
     
     // recording the midPoints
-    midPoints =  new PVector[6];
+    midPoints =  new PVector[6][2];
     for(int i = 0; i < 6; i++){
-      midPoints[i] = new PVector(r*cos((2*i+1)*PI/6), r*sin(2*i+1)*PI/6);
+      float a = (2*i+1)*PI/6;
+      midPoints[i][0] = new PVector(r*cos(a), r*sin(a));
+      midPoints[i][1] = new PVector(wideD*cos(a), wideD*sin(a));
     }
 
     // creating the connections
     connections = new Connection[4];
-    connections[0] = new Connection(pos, rS, rE, #FF0000);
-    connections[1] = new Connection(pos, gS, gE, #00FF00);
-    connections[2] = new Connection(pos, bS, bE, #0000FF);
-    connections[3] = new Connection(pos, yS, yE, #FFFF00);
+    connections[0] = new Connection(pos, cnx[0][0], cnx[0][1], #FF0000);
+    connections[1] = new Connection(pos, cnx[1][0], cnx[1][1], #00FF00);
+    connections[2] = new Connection(pos, cnx[2][0], cnx[2][1], #0000FF);
+    connections[3] = new Connection(pos, cnx[3][0], cnx[3][1], #FFFF00);
   }
 
   void show() {
     
     //draw Tile
     fill(0);
+    noStroke();
     beginShape();
     for (PVector p : vertices) {
       vertex(p.x, p.y);

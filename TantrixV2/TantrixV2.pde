@@ -2,6 +2,9 @@ Tile t;
 float R;
 float r;
 float wideD;
+float wideR;
+float[] headings ={-2*TWO_PI/3, -PI, -TWO_PI/3, -PI/3, 0, TWO_PI/3};
+
 
 
 void setup() {
@@ -9,10 +12,14 @@ void setup() {
   R = 150;
   r = R*cos(PI/6);
   wideD = 2*r;
-  
-  
-  
-  t = new Tile(0, 0, 3, 5, 0, 0, 4, 2, 0, 1);
+  wideR = wideD*cos(PI/6);
+  int[][] tSides = {
+    {2, 3}, // r
+    {0, 0}, // g
+    {4, 5}, // b
+    {0, 1} // y
+  }; 
+  t = new Tile(0, 0, tSides);
 }
 
 void draw() {
