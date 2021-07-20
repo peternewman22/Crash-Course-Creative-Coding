@@ -15,6 +15,8 @@ class Curve {
     if (stop >= cpts.length - 1) {
       isDrawn = true;
       level = (level + 1)%4;
+      isPaused = true;
+      pauseFrame = frameCount;
       println("Now progressing to level " + level);
       curves[level].stop = 1;
       curves[level].isDrawn = false;
@@ -32,16 +34,17 @@ class Curve {
   void drawLine() {
     strokeWeight(2);
     if (isDrawn) {
-      alpha = 25;
+      alpha = 0;
     } else {
       alpha = 255;
     }
     
     stroke(0, alpha);
+    fill(1,0,87,20);
     beginShape();
     for (int i = 0; i < stop; i++) {
       vertex(cpts[i].x, cpts[i].y);
     }
-    endShape();
+    endShape(CLOSE);
   }
 }
