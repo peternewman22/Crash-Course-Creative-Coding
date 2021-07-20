@@ -1,7 +1,8 @@
 float r;
 int hexRows, hexCols;
 Hex[][] hexGrid;
-color[] colours = {#C30FFF, #0D21DE, #1BE3F5, #0DDE38, #D6FB1A};
+//color[] colours = {#C30FFF, #0D21DE, #1BE3F5, #0DDE38, #D6FB1A};
+color[] colours = {#57C382, #FFE938, #FEA008, #F25A00, #DB1500, #AE1100};
 //Hex[] hexCol, hexCol2;
 int colourCycler;
 

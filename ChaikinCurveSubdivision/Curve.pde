@@ -36,15 +36,18 @@ class Curve {
     if (isDrawn) {
       alpha = 0;
     } else {
-      alpha = 255;
+      alpha = 200;
     }
     
-    stroke(0, alpha);
+    stroke(1,0,87, alpha);
     fill(1,0,87,20);
     beginShape();
     for (int i = 0; i < stop; i++) {
       vertex(cpts[i].x, cpts[i].y);
     }
-    endShape(CLOSE);
+    if(stop == cpts.length){
+      endShape(CLOSE);
+    }
+      endShape();
   }
 }

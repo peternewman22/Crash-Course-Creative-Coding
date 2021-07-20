@@ -20,7 +20,7 @@ void setup() {
   size(1000, 500);
   file = new SoundFile(this, "RunningWaters.wav");
   isStopped = true;
-  ptCount = 5;
+  ptCount = 52;
   level = 0;
   everyXFrames = 2;
   cpts0 = new PVector[ptCount];
@@ -32,8 +32,9 @@ void setup() {
   pauseForXFrames = 120;
   pauseFrame = 0;
 
-
-  for (int i = 0; i < cpts0.length; i++) {
+  cpts0[0] = new PVector(-width/2,height/2);
+  cpts0[cpts0.length - 1] = new PVector(width/2, height/2);
+  for (int i = 1; i < cpts0.length-1; i++) {
     //cpts0[i] = new PVector(i*(width/ptCount)+random(-50, 50), random(-75, 75)); // random x, y displacement
     cpts0[i] = new PVector(-width/2+i*width/ptCount + random(-20, 20), map(noise(yoff), 0, 1, -height/2+60, height/2-60));
 
