@@ -2,14 +2,16 @@ float r;
 float xOff;
 float a;
 int ptCount;
+int col;
 void setup() {
   size(1000, 1000);
-  r = 500;
+  colorMode(HSB, 360, 255, 255);
+  r = 2*width/3;
   //xOff = random(1000);
   a = 0;
-  noStroke();
   background(0);
-  stroke(255, 20);
+  col = 1;
+  
   noFill();
   ptCount = 360;
 }
@@ -17,6 +19,7 @@ void setup() {
 void draw() {
   pushMatrix();
   translate(width/2, height/2);
+  stroke(col,255,255,20);
   beginShape();
   for (int i=0; i<ptCount; i++) {
     float noiseFactor = noise(i*0.02, xOff);
@@ -26,11 +29,12 @@ void draw() {
   }
   endShape(CLOSE);
   popMatrix();
-  r -= 1;
+  r -= 0.5;
   if (r == 0) {
-    save("AwesomeSauce.png");
+    save("AwesomeSauce2.png");
     noLoop();
     
   }
-  xOff+=0.02;
+  xOff+=0.01;
+  col = (col + 1)%360;
 }
