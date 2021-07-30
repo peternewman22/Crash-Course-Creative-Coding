@@ -9,9 +9,10 @@ boolean isPlaying;
 PVector[][] corners;
 PVector c;
 float frameDuration;
+boolean isRecording;
 
 void setup() {
-  size(500, 577);
+  size(500, 585);
   isPlaying = false;
   noLoop();
   noFill();
@@ -28,9 +29,10 @@ void setup() {
   r = bigR*cos(PI/6); //inscribed radius
   
   //yOff = spacing/2*cos(PI/6);
-  
+  textAlign(CENTER);
   grid = new Hex[count][count];
   initHexGrid();
+  isRecording = false;
 
 }
 
@@ -42,7 +44,21 @@ void draw() {
   // ellipse(width/2, height/2, 2*rippleR, 2*rippleR);
   if(rippleR < maxR){
     rippleR += rIncrement;
-  } 
+  }
+
+  // fill(255);
+  // text(grid[8][8].a, grid[8][8].pos.x, grid[8][8].pos.y);
+  if(frameCount > 10 && grid[8][8].state == 1){
+    
+    isRecording = !isRecording;
+  }
+  if(isRecording){
+    // text("Now Recording", width/2, height/4);
+    saveFrame("output/gif-####.png");
+  }
+  if(frameCount > 200 && grid[8][8].state == 1){
+    noLoop();
+  }
  
 
 }
@@ -57,6 +73,7 @@ void initHexGrid(){
       } else {
         grid[i][j] = new Hex((i - 1)*bigR*1.5, (j - 1)*2*r);
       }
+      // println("(" + i + ", " + j + ")");
     }
   }
 }

@@ -18,7 +18,7 @@ class Hex {
     } else if(state == 2){
       thisR = map(cos(a), -1, 1, 0.8*bigR, bigR);
       a+=frameDuration;
-      if(a > TWO_PI){
+      if(a >= TWO_PI){
         a = 0;
         state = 1;
       }
@@ -35,5 +35,7 @@ class Hex {
       vertex(pos.x + thisR*cos(i*TWO_PI/6), pos.y + thisR*sin(i*TWO_PI/6));
     }
     endShape(CLOSE);
+    
   }
+  
 }
