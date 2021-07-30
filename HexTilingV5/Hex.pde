@@ -1,37 +1,38 @@
 class Hex {
   PVector pos;
-  PVector[] p;
-  PVector[] c;
+  int state;
+  float a;
+  float thisR;
+  float dist2c;
+
   Hex(float x, float y) {
     pos = new PVector(x, y);
-    p = new PVector[6];
-    c = new PVector[6];
-    for (int i = 0; i < 6; i++) {
-      float px = x + R*cos(i*THIRD_PI);
-      float py = y + R*sin(i*THIRD_PI);
-      p[i] = new PVector(px, py);
-      c[i] = new PVector(px, py);
-    }
+    state = 1;
+    thisR = bigR;
+    dist2c = PVector.dist(c, pos);
   }
-  
-  void showVertices() {
-    for (int i = 0; i < 6; i++) {
-      point(p[i].x, p[i].y);
-    }
-  }
-  
+
   void updateHex(){
-    for (int i = 0; i < 6; i++) {
-      float x = pos.x + currentR*cos(i*THIRD_PI);
-      float y = pos.y + currentR*sin(i*THIRD_PI);
-      c[i].set(x,y);
+    if(state == 1 && dist2c < rippleR){
+      state = 2;
+    } else if(state == 2){
+      thisR = map(cos(a), -1, 1, 0.8*bigR, bigR);
+      a+=frameDuration;
+      if(a > TWO_PI){
+        a = 0;
+        state = 1;
+      }
     }
   }
   
   void showHex() {
+    int opacity = int(map(thisR, 0.8*bigR, bigR,75,255));
+    fill(0,0,255,opacity);
+    stroke(0);
+    strokeWeight(2);
     beginShape();
     for (int i = 0; i < 6; i++) {
-      vertex(c[i].x, c[i].y);
+      vertex(pos.x + thisR*cos(i*TWO_PI/6), pos.y + thisR*sin(i*TWO_PI/6));
     }
     endShape(CLOSE);
   }
