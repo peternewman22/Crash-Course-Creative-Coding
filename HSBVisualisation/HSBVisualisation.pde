@@ -1,11 +1,13 @@
 Layer[] layers;
 int layerCount;
+Layer sampleLayer;
 
 void setup(){
   size(500, 500);
   noFill();
   colorMode(HSB,360,100,100);
   background(255,0,100);
+  strokeWeight(2);
   layerCount = 100;
   layers = new Layer[layerCount];
   for(int i = 0; i < layers.length; i++){
@@ -19,11 +21,17 @@ void setup(){
     
     layers[i] = new Layer(y, r, i);
   }
+  // show the full cone
   for(int i = 0 ; i < layers.length; i++){
     layers[i].show();
   }
 
-  save("HSB Cone.png");
+  save("HSB Layers.png");
+  
+  sampleLayer = new Layer(height/2, 200, 100);
+  // sampleLayer.show();
+  // save("Saturation Visualisation.png");
+
 }
 
 void draw(){
