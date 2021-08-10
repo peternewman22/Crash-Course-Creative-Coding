@@ -9,7 +9,7 @@ Ring ring;
 
 void setup(){
     size(1000, 1000);
-    ring = new Ring(5,1,400,40,0.01);
+    ring = new Ring(5,3,400,40,0.01);
 }
 
 void draw(){
