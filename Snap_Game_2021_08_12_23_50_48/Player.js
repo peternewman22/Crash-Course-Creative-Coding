@@ -16,11 +16,16 @@ class Player{
   playCard(){
     let currentCard = this.hand[this.hand.length -1];
     this.hand.pop();
+    this.markHasPlayed();
     return currentCard;
   }
   
   markHasPlayed(){
     this.hasPlayed = true;
+  }
+
+  markHasNotPlayed(){
+    this.hasPlayed = false;
   }
   
   receiveStack(stack){
