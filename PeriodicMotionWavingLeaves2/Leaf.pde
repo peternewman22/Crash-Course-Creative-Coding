@@ -9,12 +9,14 @@ class Leaf {
   color strokeCol;
   color col;
   float rs;
+  
   Leaf(float scale_, float offset_, float threshold_, color col_, color strokeCol_) {
     a = -HALF_PI;
     threshold = threshold_;
     scale = scale_;
     R = scale*width/4;
-    rs = scale*width/64;
+    //rs = scale*width/64;
+    rs = 0;
     r = R/2;
     offset = offset_;
     col = col_;
@@ -30,7 +32,13 @@ class Leaf {
 
   void update() {
     if (globA > threshold) {
-      a = -HALF_PI + PI/6*sin(globA-threshold);
+       
+      if(a <= -HALF_PI){
+         a = -HALF_PI + PI/6*sin(globA-threshold);
+      } else {
+         a = -HALF_PI + PI/3*sin(globA-threshold);
+      }
+     
       //end.set(R*cos(a-offset), R*sin(a-offset));
       //right.set(r*cos(a-PI/3-offset), r*sin(a-PI/3-offset));
       //left.set(r*cos(a+PI/3-offset), r*sin(a+PI/3-offset));
@@ -60,23 +68,6 @@ class Leaf {
     curveVertex(right.x, right.y);
     curveVertex(end.x, end.y);
     curveVertex(end.x, end.y);
-    endShape();
-    
-    // drawLeft
-    beginShape();
-    curveVertex(-start.x, start.y);
-    curveVertex(-start.x, start.y);
-    curveVertex(-left.x, left.y);
-    curveVertex(-end.x, end.y);
-    curveVertex(-end.x, end.y);
-    endShape();
-    beginShape();
-    curveVertex(-start.x, start.y);
-    curveVertex(-start.x, start.y);
-    curveVertex(-right.x, right.y);
-    curveVertex(-end.x, end.y);
-    curveVertex(-end.x, end.y);
-    endShape();
-    
+    endShape();    
   }
 }
