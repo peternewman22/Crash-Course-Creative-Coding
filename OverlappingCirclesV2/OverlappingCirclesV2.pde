@@ -2,29 +2,31 @@ Wall[] walls;
 Mover[] movers;
 float r = 10;
 void setup() {
-    size(800, 800);
+    size(1000, 1000);
     walls = new Wall[3];
     initWalls();
-    movers = new Mover[1];
+    movers = new Mover[20];
     initMovers();
     ellipseMode(RADIUS);
     textAlign(CENTER);
     textSize(20);
+    background(0);
 }
 
 void draw() {
-    background(0);
+    //background(0);
     translate(width / 2, height / 2);
-    showWalls();
+    //showWalls();
     updateMovers();
-    showMovers();
     
-    // for (int i = 0; i < 6; i++) {
-    //     pushMatrix();
-    //     rotate(i * TWO_PI / 6);
+    
+     for (int i = 0; i < 6; i++) {
+         pushMatrix();
+         rotate(i * TWO_PI / 6);
+         showMovers();
         
-    //     popMatrix();
-    // }
+         popMatrix();
+     }
         
 }
 
@@ -39,7 +41,7 @@ void initMovers(){
     for(int i = 0; i < movers.length; i++){
         float radius = random(width/8, 0.8*width/2);
         float theta = random(-PI/7, PI/7);
-        movers[i] = new Mover(radius*cos(theta), radius*sin(theta));
+        movers[i] = new Mover(radius*cos(theta), radius*sin(theta), i);
     }
 }
 
@@ -53,14 +55,20 @@ void showMovers(){
 }
 
 void initWalls(){
-    walls[0] = new Wall(0,0,width / 2 * cos( - PI / 6),width / 2 * sin( - PI / 6));
-    walls[1] = new Wall(0,0,width / 2 * cos(PI / 6),width / 2 * sin(PI / 6));
-    walls[2] = new Wall(width / 2 * cos(PI / 6),width / 2 * sin(PI / 6),width / 2 * cos( - PI / 6),width / 2 * sin( - PI / 6));
+    walls[0] = new Wall(0,0,width / 2 * cos( - PI / 6),width / 2 * sin( - PI / 6),0);
+    walls[1] = new Wall(0,0,width / 2 * cos(PI / 6),width / 2 * sin(PI / 6), 1);
+    walls[2] = new Wall(width / 2 * cos(PI / 6),width / 2 * sin(PI / 6),width / 2 * cos( - PI / 6),width / 2 * sin( - PI / 6), 2);
 }
         
 void showWalls() {
     for(Wall w : walls) {
         w.show();
     }
+}
+
+void keyPressed(){
+  if(keyCode == ENTER){
+    save("ButterflyKalaedoscope.png");
+  }
 }
                 
