@@ -7,8 +7,8 @@ void setup() {
   size(720, 720);
   colorMode(HSB, 360, 100, 100);
   //leaves = new Leaf[10];
-  leafs = new Leaf[20];
-  counterLeafs = new CounterLeaf[20];
+  leafs = new Leaf[40];
+  counterLeafs = new CounterLeaf[40];
   leafs[0] = new Leaf(1, 0, 0, color(320,55, 92 - 0*92/leafs.length));
   counterLeafs[0] = new CounterLeaf(1, 0, 0, color(320,55, 92 - 0*92/leafs.length));
   for (int i = 1; i < leafs.length; i++){

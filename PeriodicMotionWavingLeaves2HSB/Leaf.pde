@@ -14,7 +14,7 @@ class Leaf {
     a = -HALF_PI;
     threshold = threshold_;
     scale = scale_;
-    R = scale*width/6;
+    R = scale*width/24;
     //rs = scale*width/64;
     rs = 0;
     r = R/2;
