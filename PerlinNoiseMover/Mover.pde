@@ -3,11 +3,13 @@ class Mover{
   float xOff;
   float yOff;
   int ix;
+  color col;
   Mover(int ix_){
     p = new PVector(random(width), random(height));
     ix = ix_;
     yOff = random(1000);
     xOff = random(1000);
+    col = colours[int(random(colours.length))];
   }
   
   void update(){
@@ -18,7 +20,8 @@ class Mover{
   
   void show(){
     //ellipse(p.x, p.y, 2*r, 2*r);
-    stroke(255, 50);
+    //stroke(255, 50);
+    stroke(#f05e1b50);
     strokeWeight(1);
     point(p.x, p.y);
     

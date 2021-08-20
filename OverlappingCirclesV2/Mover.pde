@@ -2,13 +2,14 @@ class Mover {
   PVector p, v;
   PVector[] wallIntersectionPoints;
   int ix;
+  color col;
 
   Mover(float x, float y, int ix_) {
     p = new PVector(x, y);
     v = PVector.random2D();
     wallIntersectionPoints = new PVector[walls.length];
     ix = ix_;
-    
+    col = colours[int(random(colours.length))];
   }
 
   void update() {
@@ -66,8 +67,15 @@ class Mover {
       if(i != ix){
         float d = PVector.dist(p, movers[i].p);
         if(d <= 2*r){
-          int col = int(map(d, r/4, 2*r,50, 255));
+          // int col = int(map(d, r/4, 2*r,50, 255));
+          // stroke(col);
+          
           stroke(col);
+          // if(random(1) < 0.5){
+          //   stroke(col);
+          // } else{
+          //   stroke(movers[i].col);
+          // }
           line(p.x, p.y, movers[i].p.x, movers[i].p.y);
         }
       }
