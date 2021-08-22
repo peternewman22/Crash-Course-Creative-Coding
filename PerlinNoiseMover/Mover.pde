@@ -29,7 +29,8 @@ class Mover{
       if(swarm[i].ix != ix){
         float d = PVector.dist(p, swarm[i].p);
         if(d < 2*r){
-          stroke(int(map(d, 0, 2*r, 50, 255)), 100);
+          //stroke(int(map(d, 0, 2*r, 50, 255)), 100);
+          stroke(col);
           strokeWeight(2);
           line(p.x, p.y, swarm[i].p.x, swarm[i].p.y);
         }
