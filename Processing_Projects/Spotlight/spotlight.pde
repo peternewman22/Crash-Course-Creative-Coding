@@ -9,7 +9,7 @@ float r = 100;
 float overlapScl = 0.5;
 float xOff, yOff;
 float inc = 0.01;
-int opacity = 75;
+int opacity = 5;
 PVector cntr;
 
 
@@ -29,24 +29,24 @@ void setup(){
     noFill();
    
 
-    // background(0);
+    background(0);
 }
 
 void draw(){
-    background(0);
+    // background(0);
     // m.set(float(mouseX), float(mouseY));
     m.set(width*noise(xOff), height*noise(yOff));
     float d = PVector.dist(cntr, m);
-    // int intensity = int(map(d, 0, width/sqrt(2), 255, 0));
-    int intensity = 255;
+    int intensity = int(map(d, 0, width/sqrt(2), 255, 0));
+    // int intensity = 255;
     stroke(intensity,opacity);
     // ellipse(test.x, test.y, r, r);
-    ellipse(m.x, m.y, r, r);
+    // ellipse(m.x, m.y, r, r);
     
     
     // drawing overlapScl
     for(PVector c: circleField){
-        ellipse(c.x, c.y, r, r);
+        // ellipse(c.x, c.y, r, r);
         drawOverlap(c);
     }
 
