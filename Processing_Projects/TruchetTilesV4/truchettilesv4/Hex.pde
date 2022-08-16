@@ -10,6 +10,7 @@ class Hex{
   
   void drawHex(color c){
     fill(c);
+    //stroke(c);
     beginShape();
         for(int i = 0; i < 6; i ++){
           vertex(rM*cos(i*THIRD_PI), rM*sin(i*THIRD_PI));
@@ -19,6 +20,7 @@ class Hex{
   
   void drawArcAtCorners(int[] corners, color c){
     fill(c);
+    //stroke(c);
     for(int i : corners){
       pushMatrix();
       rotate(i*THIRD_PI);
