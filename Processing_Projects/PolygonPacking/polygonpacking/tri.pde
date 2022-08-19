@@ -2,13 +2,15 @@ class Tri{
   PVector pos;
   float a;
   float r;
+  float rMax;
   Tri(float x, float y, float a_){
     a = a_;
     pos = new PVector(x,y);
     r = 1;
+    rMax = map(PVector.dist(pos,c), 0, width, 100, 1);
   }
   void grow(){
-    if(r < maxSize){
+    if(r < rMax){
       r += growthRate;
     }
   }
