@@ -9,10 +9,7 @@ class Ring{
         v = vel.copy();
         nV = 0;//random(0,10000);
         perts = new Perturbation[n];
-        for(int i = 0; i < perts.length; i++){
-            perts[i] = new Perturbation(i*TWO_PI/n, initNoiseVal);
-            initNoiseVal += initRoughness;
-        }
+        initPertsPassingThroughOwnPath();
     }
 
     void update(){
@@ -30,5 +27,13 @@ class Ring{
             }
         endShape();
 
+    }
+
+    void initPertsPassingThroughOwnPath(){
+        for(int i = 0; i < perts.length; i++){
+            float angle = i*TWO_PI/n;
+            perts[i] = new Perturbation(i*TWO_PI/n, initNoiseVal);
+            initNoiseVal += initRoughness;
+        }
     }
 }
