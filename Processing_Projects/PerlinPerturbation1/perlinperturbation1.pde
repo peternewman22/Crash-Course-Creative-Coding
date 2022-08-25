@@ -1,4 +1,4 @@
-float maxAsFraction = 1.4;
+float maxAsFraction = 1.8;
 float r;
 int n = 40;
 PVector c;
@@ -12,7 +12,7 @@ void setup(){
     r = width/6;
     background(0);
     noFill();
-    stroke(255,20);
+    stroke(255,40);
     strokeWeight(1);
     ring = new Ring(width/2, -r, new PVector(0,1));
 
